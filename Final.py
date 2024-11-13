@@ -26,3 +26,13 @@ class sparkles:
         self.min_alpha = 50
 
     def update(self):
+        if self.alpha_direction == 1:
+            self.alpha += 2
+            if self.alpha >= self.max_alpha:
+                self.alpha = self.max_alpha
+                self.alpha_direction = -1
+        else:
+            self.alpha -+ 2
+            if self.alpha <= self.min_alpha:
+                self.alpha = self.min_alpha
+                self.alpha_direction = 1
