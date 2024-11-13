@@ -34,6 +34,7 @@ Minimal Viable Outcome:
 - Week 2
   1. Creating character 
   2. Writing code for character movement
+  3. Ive changed my idea to a pokemon themed map with a sprite that walks around. A interactive illustration yet not a game.
 
 - Week N (Final)
   1. Cleaning up code and make sure its running properly
