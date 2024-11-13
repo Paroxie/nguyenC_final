@@ -38,7 +38,7 @@ class sparkles:
                 self.alpha_direction = 1
     
     def draw(self, surface):
-        sparkle_color = (WHITE[0], WHITE[1], WHITE[2], self.alpha)
+        sparkle_color = (White[0], White[1], White[2], self.alpha)
         diamond = [
             (self.x, self.y - self.size),  
             (self.x + self.size, self.y),  
@@ -46,3 +46,13 @@ class sparkles:
             (self.x - self.size, self.y)
         ]
         pygame.draw.polygon(surface, sparkle_color, diamond)
+
+
+def create_gradient():
+    for y in range(HEIGHT):
+        color = [
+            Pink[0] + (Blue[0] - Pink[0]) * y // HEIGHT,
+            Pink[1] + (Blue[1] - Pink[1]) * y // HEIGHT,
+            Pink[2] + (Blue[2] - Pink[2]) * y // HEIGHT
+        ]
+        pygame.draw.line(screen, color, (0, y), (WIDTH, y))
