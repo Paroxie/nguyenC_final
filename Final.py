@@ -36,3 +36,13 @@ class sparkles:
             if self.alpha <= self.min_alpha:
                 self.alpha = self.min_alpha
                 self.alpha_direction = 1
+    
+    def draw(self, surface):
+        sparkle_color = (WHITE[0], WHITE[1], WHITE[2], self.alpha)
+        diamond = [
+            (self.x, self.y - self.size),  
+            (self.x + self.size, self.y),  
+            (self.x, self.y + self.size),  
+            (self.x - self.size, self.y)
+        ]
+        pygame.draw.polygon(surface, sparkle_color, diamond)
