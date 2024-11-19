@@ -63,3 +63,36 @@ current_sprite = sprite_forward #default
 sparkles = []
 
 sparkle_timer = 0
+
+while running: 
+    screen.fill((0, 0, 0))
+    create_gradient()
+
+    screen.blit(background_object, (0, 0))
+
+    for event in pygame.evemt.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_LEFT]:
+        sprite_rect.x -= velocity
+        current_sprite = sprite_left  # Show the left-facing sprite
+    elif keys[pygame.K_RIGHT]:
+        sprite_rect.x += velocity
+        current_sprite = sprite_right  # Show the right-facing sprite
+    elif keys[pygame.K_UP]:
+        sprite_rect.y -= velocity
+        current_sprite = sprite_forward  # Keep the forward-facing sprite
+    elif keys[pygame.K_DOWN]:
+        sprite_rect.y += velocity
+        current_sprite = sprite_forward  # Keep the forward-facing sprite
+
+    screen.blit(current_sprite, sprite_rect)
+
+    sparkle_timer += 1
+    if sparkle_timer >= 15:
+        sparkle_timer = 0
+        new_sparkle = Sparkle(random.randint(0, WIDTH), random.randint(0, HEIGHT), random.randint(2, 5))
+        sparkle.append(new_sparkle)
