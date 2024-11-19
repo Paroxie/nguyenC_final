@@ -56,3 +56,10 @@ def create_gradient():
             Pink[2] + (Blue[2] - Pink[2]) * y // HEIGHT
         ]
         pygame.draw.line(screen, color, (0, y), (WIDTH, y))
+
+running = True
+current_sprite = sprite_forward #default 
+
+sparkles = []
+
+sparkle_timer = 0
