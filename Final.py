@@ -18,6 +18,13 @@ sprite_left = pygame.image.load("CharaSideL.png")
 sprite_right = pygame.image.load("CharaSideR.png")
 sprite_forward = pygame.image.load("CharaFront.png")
 
+background_object = pygame.image.load("object_test.png")  
+
+sprite_rect = sprite_forward.get_rect()  
+sprite_rect.center = (WIDTH // 2, HEIGHT // 2)  
+
+velocity = 5  #
+
 class sparkles:
     def __init__(self, x, y, size): 
         self.x = x
