@@ -14,6 +14,9 @@ Pink = (255, 182, 193)
 Blue = (173, 216, 230)
 White = (255, 255, 255)
 
+sprite_left = pygame.image.load("CharaSideL.png")
+sprite_right = pygame.image.load("CharaSideR.png")
+sprite_forward = pygame.image.load("CharaFront.png")
 
 class sparkles:
     def __init__(self, x, y, size): 
@@ -96,3 +99,10 @@ while running:
         sparkle_timer = 0
         new_sparkle = Sparkle(random.randint(0, WIDTH), random.randint(0, HEIGHT), random.randint(2, 5))
         sparkle.append(new_sparkle)
+
+    pygame.display.flip()
+
+    pygame.time.Clock().tick(60)
+
+pygame.quit()
+sys.exit()
