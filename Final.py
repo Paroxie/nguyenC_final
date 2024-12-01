@@ -20,11 +20,13 @@ background_object = pygame.image.load("images/buildings.png")
 
 road_image = pygame.image.load("images/road.png")
 road_rect = road_image.get_rect()
+road_rect.topleft = (0, HEIGHT - 100)  
 
 background_object = pygame.transform.scale(background_object, (WIDTH, HEIGHT))
 
 sprite_rect = sprite_forward.get_rect()  
-sprite_rect.center = (WIDTH // 2, HEIGHT // 2)  
+sprite_rect.centerx = WIDTH // 2  
+sprite_rect.bottom = road_rect.top  
 
 velocity = 5  
 
