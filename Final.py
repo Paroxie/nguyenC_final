@@ -19,6 +19,7 @@ sprite_forward = pygame.image.load("images/CharaFront.png")
 background_object = pygame.image.load("images/buildings.png")
 
 road_image = pygame.image.load("images/road.png")
+road_rect = road_image.get_rect()
 
 background_object = pygame.transform.scale(background_object, (WIDTH, HEIGHT))
 
@@ -79,6 +80,7 @@ while running:
     create_gradient()
     
     screen.blit(background_object, (0, 0))
+    screen.blit(road_image, road_rect)
 
     for sparkle in sparkles:
         sparkle.update()
@@ -90,18 +92,31 @@ while running:
 
     # Handle keyboard input for movement
     keys = pygame.key.get_pressed()
+    
+    # Horizontal movement (left and right) with platform constraints
     if keys[pygame.K_LEFT]:
-        sprite_rect.x -= velocity
+        if sprite_rect.left > road_rect.left:  # Ensure character doesn't go off the left side of the road
+            sprite_rect.x -= velocity
         current_sprite = sprite_left  # Show the left-facing sprite
     elif keys[pygame.K_RIGHT]:
-        sprite_rect.x += velocity
+        if sprite_rect.right < road_rect.right:  # Ensure character doesn't go off the right side of the road
+            sprite_rect.x += velocity
         current_sprite = sprite_right  # Show the right-facing sprite
-    elif keys[pygame.K_UP]:
-        sprite_rect.y -= velocity
+
+    # Vertical movement (up-down) constrained to the platform
+    if keys[pygame.K_UP]:
+        if sprite_rect.top > road_rect.top:  # Prevent moving above the platform
+            sprite_rect.y -= velocity
         current_sprite = sprite_forward  # Keep the forward-facing sprite
     elif keys[pygame.K_DOWN]:
-        sprite_rect.y += velocity
+        if sprite_rect.bottom < road_rect.bottom:  # Prevent moving below the platform
+            sprite_rect.y += velocity
         current_sprite = sprite_forward  # Keep the forward-facing sprite
+
+    # Constrain the character's vertical position to the platform's y-coordinate
+    if sprite_rect.bottom > road_rect.top:
+        sprite_rect.bottom = road_rect.top  # Place character on the platform
+
 
     # Draw the character sprite
     screen.blit(current_sprite, sprite_rect)
