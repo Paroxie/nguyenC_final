@@ -18,6 +18,8 @@ sprite_right = pygame.image.load("images/CharaSideR.png")
 sprite_forward = pygame.image.load("images/CharaFront.png")
 background_object = pygame.image.load("images/buildings.png")
 
+road_image = pygame.image.load("images/road.png")
+
 background_object = pygame.transform.scale(background_object, (WIDTH, HEIGHT))
 
 sprite_rect = sprite_forward.get_rect()  
