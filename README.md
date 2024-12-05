@@ -1,4 +1,5 @@
 # nguyenC_final
+LINK: https://youtu.be/5-ESycvetBs
 
 My project is a "interactive" like illustration with a moving character. It is a small character and a building that it owns. You can move the character left and right across the screen but only limited to one scene. 
 
